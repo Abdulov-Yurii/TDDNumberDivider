@@ -1,5 +1,3 @@
-import org.hamcrest.CoreMatchers;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -28,7 +26,7 @@ public class TestingNumberDivider {
         }catch (RuntimeException e){
             exception = e;
         }
-        assertThat("expected negative value -10", is(exception.getMessage()));
+        assertThat("expected negative number -10", is(exception.getMessage()));
     }
 
     @Test
