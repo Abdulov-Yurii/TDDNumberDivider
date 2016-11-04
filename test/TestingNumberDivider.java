@@ -2,8 +2,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 
 /**
  * Created by employee on 11/4/16.
@@ -33,7 +32,13 @@ public class TestingNumberDivider {
     }
 
     @Test
-    public void getDivider(){
-        assertThat(1, equalTo(NumberDivider.divide(1)));
+    public void getDividerZeroOrOne(){
+        assertThat("[1]", is(NumberDivider.divide(1).toString()));
     }
+
+    @Test
+    public void getDividerStandardNumber(){
+        assertThat("[[2, 3], [3, 2]]", equalTo(NumberDivider.divide(6).toString()));
+    }
+
 }
