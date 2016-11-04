@@ -20,8 +20,7 @@ public class TestingNumberDivider {
         NumberDivider.divide(-3);
     }
 
-    @Test(expected = RuntimeException.class)
-    @Ignore
+    @Test
     public void whenPutNegativeNumberThrowsException(){
         RuntimeException exception = null;
         try {
@@ -34,7 +33,7 @@ public class TestingNumberDivider {
 
     @Test
     public void getDividerZeroOrOne(){
-        assertThat(1 , is(NumberDivider.divide(1).toString()));
+        assertThat("[1]", is(NumberDivider.divide(1).toString()));
     }
 
     @Test
