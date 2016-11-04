@@ -1,3 +1,4 @@
+import org.hamcrest.CoreMatchers;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -33,12 +34,17 @@ public class TestingNumberDivider {
 
     @Test
     public void getDividerZeroOrOne(){
-        assertThat("[1]", is(NumberDivider.divide(1).toString()));
+        assertThat(1 , is(NumberDivider.divide(1).toString()));
     }
 
     @Test
     public void getDividerStandardNumber(){
-        assertThat("[[2, 3], [3, 2]]", equalTo(NumberDivider.divide(6).toString()));
+        assertThat("[2, 3]", equalTo(NumberDivider.divide(6).toString()));
     }
 
+    @Test
+    public void putBigNumber(){
+        String variants = NumberDivider.divide(50).toString();
+        assertThat(variants, containsString("[2, 5, 5]") );
+    }
 }

@@ -5,26 +5,25 @@ import java.util.List;
  * Created by employee on 11/4/16.
  */
 public class NumberDivider {
-    private static List<String> variants = new ArrayList<>();
+    private static List<Integer> variants = null;
 
 
-    public static List<String> divide(int value) {
-        if (value < 0){
+    public static List<Integer> divide(int value) {
+        variants = new ArrayList<>();
+        if (value < 0) {
             throw new RuntimeException("expected negative value " + value);
-        }else if (value == 0 || value == 1){
-            variants.add(value + "");
+        } else if (value == 0 || value == 1) {
+            variants.add(value);
             return variants;
-        }else {
-            getSimplyNumbers(value);
-            return variants;
-        }
-    }
-
-    private static void getSimplyNumbers(int value) {
-        for (int i = 2; i < value; i++) {
-            if (value % i == 0){
-                variants.add("[" + i + ", " + (value/i) + "]");
+        } else {
+            for (int easilyNumber = 2; easilyNumber <= value; ) {
+                if (value % easilyNumber == 0) {
+                    variants.add(easilyNumber);
+                    value = value / easilyNumber;
+                } else
+                    easilyNumber += 1;
             }
+            return variants;
         }
     }
 }
